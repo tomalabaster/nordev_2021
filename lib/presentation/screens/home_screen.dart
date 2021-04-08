@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () async {
-          Jump jump;
+          var jump;
 
           if (MediaQuery.of(context).size.width >= 640) {
             jump = await showDialog(

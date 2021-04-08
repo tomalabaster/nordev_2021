@@ -5,10 +5,12 @@ import 'package:nordev_2021/domain/entities/jump.dart';
 
 class JumpInformationListItem extends StatelessWidget {
   final Jump jump;
+  final Function onTap;
 
   const JumpInformationListItem({
     Key key,
     @required this.jump,
+    @required this.onTap,
   }) : super(key: key);
 
   @override
@@ -17,9 +19,7 @@ class JumpInformationListItem extends StatelessWidget {
       title: Text('Jump: ${this.jump.number}'),
       subtitle: Text(
           '${this.jump.dropzone} on ${DateFormat.yMMMd().format(this.jump.dateTime)}'),
-      onTap: () {
-        Navigator.of(context).pushNamed('/jump/${this.jump.number}');
-      },
+      onTap: this.onTap,
     );
   }
 }

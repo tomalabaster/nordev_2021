@@ -16,18 +16,58 @@ class JumpInformationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Jump: ${this.jump.number}'),
-      ),
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(child: JumpInformationInfoBox(jump: this.jump)),
-          SliverToBoxAdapter(child: JumpInformationGraph(jump: this.jump)),
-          JumpInformationFriendsJumpsHeader(),
-          JumpInformationFriendsJumpsList(),
-        ],
-      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('Jump: ${this.jump.number}'),
+          ),
+          body: CustomScrollView(
+            slivers: this._renderChildren(
+              sideBySideGraphAndInfo: constraints.maxWidth >= 1024,
+            ),
+          ),
+        );
+      },
     );
+  }
+
+  List<Widget> _renderChildren({
+    bool sideBySideGraphAndInfo = false,
+  }) {
+    final children = <Widget>[];
+
+    if (sideBySideGraphAndInfo) {
+      children.add(
+        SliverToBoxAdapter(
+          child: IntrinsicHeight(
+            child: Row(
+              children: [
+                Expanded(
+                  child: JumpInformationGraph(jump: this.jump),
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Expanded(child: JumpInformationInfoBox(jump: this.jump)),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    } else {
+      children.add(
+          SliverToBoxAdapter(child: JumpInformationInfoBox(jump: this.jump)));
+      children.add(
+          SliverToBoxAdapter(child: JumpInformationGraph(jump: this.jump)));
+    }
+
+    children.add(JumpInformationFriendsJumpsHeader());
+    children.add(JumpInformationFriendsJumpsList());
+
+    return children;
   }
 }

@@ -29,13 +29,17 @@ class MyApp extends StatelessWidget {
 
             if (jump != null) {
               return MaterialPageRoute(
+                settings: settings,
                 builder: (context) => JumpInformationScreen(jump: jump),
               );
             }
           }
         }
 
-        return MaterialPageRoute(builder: (context) => NotFoundScreen());
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (context) => NotFoundScreen(),
+        );
       },
     );
   }

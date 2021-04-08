@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nordev_2021/jumps.dart';
+import 'package:nordev_2021/data/jumps.dart';
 import 'package:nordev_2021/presentation/screens/home_screen.dart';
 import 'package:nordev_2021/presentation/screens/jump_information_screen.dart';
 import 'package:nordev_2021/presentation/screens/new_jump_screen.dart';
@@ -36,6 +36,9 @@ class MyApp extends StatelessWidget {
           }
         }
 
+        return null;
+      },
+      onUnknownRoute: (settings) {
         return MaterialPageRoute(
           settings: settings,
           builder: (context) => NotFoundScreen(),

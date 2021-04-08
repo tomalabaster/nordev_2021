@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:nordev_2021/domain/entities/jump.dart';
-import 'package:nordev_2021/jumps.dart';
+import 'package:nordev_2021/data/jumps.dart';
 import 'package:nordev_2021/presentation/components/jump_information_list_item.dart';
 import 'package:nordev_2021/presentation/components/new_jump_form.dart';
 import 'package:nordev_2021/presentation/screens/jump_information_screen.dart';
@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.all(20),
                     child: RaisedButton(
                       onPressed: () => Navigator.of(context)
-                          .pushNamed('/jump/${jump.number}'),
+                          .pushNamed('/jump/${this._selectedJump.number}'),
                       child: Text('View full screen'),
                     ),
                   ),

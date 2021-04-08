@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:nordev_2021/jumps.dart';
+import 'package:nordev_2021/data/jumps.dart';
 import 'package:nordev_2021/presentation/components/jump_information_list_item.dart';
 
 class HomeScreen extends StatefulWidget {
